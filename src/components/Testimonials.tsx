@@ -1,117 +1,146 @@
+'use client';
+
+import React, { useRef } from 'react';
+import { FaChevronLeft, FaChevronRight, FaStar } from 'react-icons/fa';
+
+// Mock data reflecting the glowing review of a professional video editor
 const testimonials = [
-  {
-    name: "MARCUS",
-    role: "Co Founder",
-    text: "Perfect Communication And Exceptional Skills. This Guy Is King.",
+  { 
+    id: 1, 
+    name: "Nicky R.", 
+    role: "11-50 employees", 
+    text: <>Jimmy’s editing is incredibly user-friendly and <strong>modern</strong>. It has saved me <strong>a lot of time</strong> trying to do it all myself.</>,
+    initial: "N"
   },
-  {
-    name: "PETER",
-    role: "Manager",
-    text: "Did A Great Job. Understood All The Requirements.",
+  { 
+    id: 2, 
+    name: "Sarah M.", 
+    role: "Content Creator", 
+    text: <>Working with him was the best decision. The pacing and sound design are <strong>top notch</strong>. Highly recommend his services!</>,
+    initial: "S"
   },
-  {
-    name: "JANE",
-    role: "CEO",
-    text: "Jimmy Was Wonderful To Work With. Will Definitely Hire Him Again.",
+  { 
+    id: 3, 
+    name: "David K.", 
+    role: "Podcast Host", 
+    text: <>He knows exactly how to capture the audience's attention. Our <strong>engagement skyrocketed</strong> after Jimmy started editing!</>,
+    initial: "D"
+  },
+  { 
+    id: 4, 
+    name: "Alex B.", 
+    role: "Agency Director", 
+    text: <>Professional, remarkably fast, and extremely talented. Jimmy delivers <strong>premium quality</strong> every single time.</>,
+    initial: "A"
   },
 ];
 
-function StarRating() {
-  return (
-    <div className="flex gap-1 mb-3">
-      {[...Array(5)].map((_, i) => (
-        <svg key={i} width="14" height="14" fill="#FFD700" viewBox="0 0 24 24">
-          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export default function Testimonials() {
-  return (
-    <section
-      id="testimonials"
-      className="relative py-24 px-8 overflow-hidden"
-      style={{ background: "#000" }}
-    >
-      {/* Top purple accent line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, var(--purple-primary), transparent)",
-        }}
-      />
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-      <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-14">
-          <h2 className="section-title text-white">TESTIMONIALS</h2>
-          <div className="title-divider mx-auto" />
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section id="testimonials" className="relative w-full py-20 lg:py-28 text-white bg-black overflow-hidden">
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="mb-12 flex flex-col items-center">
+          <h2 
+            className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-2 text-white text-center"
+            style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
+          >
+            Testimonials
+          </h2>
+          <div className="h-[2px] w-64 bg-gradient-to-r from-red-600 via-green-500 to-blue-600"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="testimonial-card p-8 rounded-sm relative overflow-hidden"
-              style={{ animationDelay: `${i * 0.15}s` }}
-            >
-              {/* Quote mark */}
-              <div
-                className="absolute top-3 right-4 text-6xl opacity-20 select-none pointer-events-none"
-                style={{
-                  fontFamily: "Georgia, serif",
-                  lineHeight: 1,
-                  color: "#fff",
-                }}
+        {/* Slider Controls & Carousel */}
+        <div className="relative group mt-8">
+          
+          <button 
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 md:-translate-x-6 z-30 bg-black/80 hover:bg-[#7800FF] p-3 rounded-full text-white transition-all duration-300 opacity-0 group-hover:opacity-100 disabled:opacity-0 shadow-lg border border-gray-800"
+            aria-label="Scroll left"
+          >
+            <FaChevronLeft size={20} />
+          </button>
+
+          {/* Testimonial Scroll Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto gap-6 sm:gap-10 pb-16 pt-10 px-4 snap-x snap-mandatory scrollbar-hide items-stretch"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((t) => (
+              <div 
+                key={t.id} 
+                className="relative w-[300px] md:w-[380px] flex-none snap-center mt-10 h-auto"
               >
-                "
+                {/* Overlapping Avatar Area */}
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-[5px] border-black overflow-hidden z-20 bg-zinc-800 flex items-center justify-center text-3xl font-bold text-gray-500 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                   {/* Placeholder for the user's face (replace with Image tag) */}
+                   {t.initial}
+                </div>
+                
+                {/* Card Container (Dark mode adapted from white card) */}
+                <div className="bg-[#111111] border border-zinc-800/80 rounded-[2.5rem] p-8 pt-16 h-full flex flex-col justify-between shadow-2xl transition-all duration-300 hover:border-[#7800FF]/50 hover:-translate-y-2 group/card">
+                   
+                   <div>
+                     {/* 5 Stars requested by user */}
+                     <div className="flex justify-center text-[#FFD700] mb-6 gap-1">
+                       <FaStar size={18} />
+                       <FaStar size={18} />
+                       <FaStar size={18} />
+                       <FaStar size={18} />
+                       <FaStar size={18} />
+                     </div>
+                     
+                     {/* Testimonial Body (matching the mixed font weight pattern) */}
+                     <p className="text-gray-300 text-lg md:text-xl font-light text-center leading-relaxed" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+                       {t.text}
+                     </p>
+                   </div>
+                   
+                   {/* Author Subtext */}
+                   <div className="mt-10 text-center">
+                     <h4 className="text-white font-semibold tracking-wide text-lg" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>{t.name}</h4>
+                     <p className="text-gray-500 text-sm mt-1">{t.role}</p>
+                   </div>
+
+                </div>
               </div>
+            ))}
+          </div>
 
-              <StarRating />
+          <button 
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 md:translate-x-6 z-30 bg-black/80 hover:bg-[#7800FF] p-3 rounded-full text-white transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-lg border border-gray-800"
+            aria-label="Scroll right"
+          >
+            <FaChevronRight size={20} />
+          </button>
 
-              <h3
-                className="text-white font-bold mb-1"
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "1.5rem",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                {t.name}
-              </h3>
-              <p
-                className="text-purple-200 text-xs tracking-widest mb-4 font-semibold uppercase"
-                style={{
-                  fontFamily: "'Rajdhani', sans-serif",
-                  letterSpacing: "0.2em",
-                }}
-              >
-                {t.role}
-              </p>
-              <p
-                className="text-white text-sm leading-relaxed"
-                style={{
-                  fontFamily: "'Rajdhani', sans-serif",
-                  fontWeight: 500,
-                }}
-              >
-                {t.text}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
-
-      {/* Bottom purple accent line */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, var(--purple-primary), transparent)",
-        }}
-      />
+      
+      {/* Global Style overrides to enforce hidden scrollbar for webkit (Chrome/Safari) */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+      `}} />
     </section>
   );
 }

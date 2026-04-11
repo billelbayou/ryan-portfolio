@@ -1,87 +1,55 @@
-const skills = [
-  "Cash Cow Editing",
-  "Reels Editing",
-  "Logo Animation",
-  "Podcast Edit",
-  "Color Grading",
-  "Motion Graphics",
-  "Cash Cow Editing",
-  "Reels Editing",
-  "Logo Animation",
-  "Podcast Edit",
-  "Color Grading",
-  "Motion Graphics",
-];
+import React from "react";
 
 export default function About() {
-  return (
-    <section
-      id="about"
-      className="relative py-24 overflow-hidden"
-      style={{ background: "#000" }}
-    >
-      {/* Subtle background texture */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(139,0,255,0.8) 1px, transparent 0)",
-          backgroundSize: "30px 30px",
-        }}
-      />
+  const skills = [
+    "Cash Cow Editing",
+    "Reels Editing",
+    "Logo Animation",
+    "Podcast Edit",
+  ];
 
-      <div className="relative z-10 text-center mb-12 px-8">
-        <h2 className="section-title text-white">ABOUT ME</h2>
-        <div className="title-divider mx-auto" />
-        <p
-          className="text-gray-400 max-w-2xl mx-auto leading-relaxed"
-          style={{
-            fontFamily: "'Rajdhani', sans-serif",
-            fontSize: "1rem",
-            letterSpacing: "0.02em",
-          }}
-        >
-          Welcome to the cinematic realm of Jimmy, where creativity meets
-          technology to craft visually stunning narratives. With a passion for
-          storytelling and a keen eye for detail, I embark on a journey to
-          transform ordinary footage into extraordinary visual experiences.
-        </p>
+  return (
+    <section id="about" className="relative w-full py-20 lg:py-28 text-white overflow-hidden">
+      
+      {/* Optional faint background circles mimicking the design 
+          (commented out in case a purely black background is preferred, 
+          but left as faint visual interest) */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-20 flex justify-center items-center gap-10">
+         <div className="w-[30rem] h-[30rem] rounded-full border-[20px] border-purple-900/40 blur-3xl"></div>
+         <div className="w-[20rem] h-[20rem] rounded-full border-[15px] border-blue-900/40 blur-3xl hidden md:block"></div>
       </div>
 
-      {/* Marquee skills */}
-      <div className="relative mt-10 overflow-hidden">
-        {/* Left/right fade masks */}
-        <div
-          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(90deg, #000, transparent)" }}
-        />
-        <div
-          className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(-90deg, #000, transparent)" }}
-        />
-
-        <div
-          className="flex gap-8 whitespace-nowrap"
-          style={{ animation: "marquee 25s linear infinite" }}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        
+        {/* Heading */}
+        <h2 
+          className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-2"
+          style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
         >
-          {skills.map((skill, i) => (
-            <div key={i} className="flex items-center gap-8 shrink-0">
-              <span
-                className="text-sm font-semibold tracking-[0.15em] text-gray-300 uppercase"
-                style={{ fontFamily: "'Rajdhani', sans-serif" }}
-              >
-                {skill}
-              </span>
-              <span
-                className="w-2 h-2 rounded-full shrink-0"
-                style={{
-                  background: "var(--purple-primary)",
-                  boxShadow: "0 0 8px var(--purple-primary)",
-                }}
-              />
-            </div>
+          About Me
+        </h2>
+        
+        {/* Gradient Underline */}
+        <div className="h-[2px] w-64 bg-gradient-to-r from-red-600 via-green-500 to-blue-600 mb-10"></div>
+
+        {/* Paragraph Description */}
+        <p className="text-gray-300 font-light text-base md:text-lg leading-relaxed max-w-4xl mb-16" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+          Welcome To The Cinematic Realm Of Jimmy, Where Creativity Meets Technology To Craft Visually Stunning Narratives. With A Passion For Storytelling And A Keen Eye For Detail, I Embark On A Journey To Transform Ordinary Footage Into Extraordinary Visual Experiences.
+        </p>
+
+        {/* Skills / Services List */}
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-sm md:text-base font-medium uppercase tracking-widest text-white" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+          {skills.map((skill, index) => (
+            <React.Fragment key={skill}>
+              <span>{skill}</span>
+              {/* Dot Separator (except after the last item) */}
+              {index < skills.length - 1 && (
+                <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-tr from-green-400 to-blue-500 hidden sm:inline-block"></span>
+              )}
+            </React.Fragment>
           ))}
         </div>
+
       </div>
     </section>
   );

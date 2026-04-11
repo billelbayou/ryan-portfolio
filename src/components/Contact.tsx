@@ -1,171 +1,116 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import React from 'react';
+import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", interest: "" });
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (form.name && form.interest) {
-      setSent(true);
-      setTimeout(() => setSent(false), 3000);
-      setForm({ name: "", interest: "" });
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <section
-      id="contact"
-      className="relative py-24 px-8 overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(to bottom, #000 0%, #0a0010 50%, #000 100%)",
-      }}
-    >
-      {/* Purple glow top */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-1 rounded-full"
-        style={{
-          background: "var(--purple-primary)",
-          boxShadow: "0 0 60px 20px rgba(139,0,255,0.4)",
-        }}
-      />
-
-      <div className="container mx-auto max-w-4xl">
-        <h2
-          className="text-white mb-12"
-          style={{
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(2rem, 5vw, 3.8rem)",
-            letterSpacing: "0.05em",
-            lineHeight: 1.05,
-          }}
-        >
-          I AM READY TO
-          <br />
-          <span
-            style={{
-              color: "var(--purple-primary)",
-              textShadow: "0 0 40px rgba(139,0,255,0.5)",
-            }}
-          >
-            CONSULT YOU
-          </span>
-        </h2>
-
-        {/* Form row */}
-        <div className="flex flex-col sm:flex-row items-end gap-6 mb-14">
-          <div className="flex-1">
-            <label
-              className="block text-gray-400 text-xs tracking-widest uppercase mb-2"
-              style={{
-                fontFamily: "'Rajdhani', sans-serif",
-                letterSpacing: "0.2em",
-              }}
+    <section id="contact" className="relative w-full py-20 lg:py-28 text-white bg-black border-t border-gray-900 overflow-hidden">
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Main Content Container */}
+        <div className="flex flex-col lg:flex-row justify-between lg:pr-24">
+          
+          {/* Form Side */}
+          <div className="w-full lg:w-3/4 flex flex-col items-start pr-0 lg:pr-10">
+            
+            {/* Title & Underline */}
+            <h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wider mb-2 text-white"
+              style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
             >
-              My Name Is
-            </label>
-            <input
-              type="text"
-              placeholder="Name"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="contact-input"
-            />
+              I Am Ready To Consult You
+            </h2>
+            <div className="h-[2px] w-full max-w-[600px] bg-gradient-to-r from-red-600 via-green-500 to-blue-600 mb-12"></div>
+
+            {/* Custom Form Layout matching user adjustments */}
+            <form className="w-full mb-16" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                
+                {/* Name */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+                  <label className="text-gray-300 whitespace-nowrap font-light" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>My Name Is</label>
+                  <input 
+                    type="text" 
+                    placeholder="Name" 
+                    className="w-full bg-[#0a0a0a] border border-gray-800 p-3 text-white focus:border-[#7800FF] focus:outline-none transition-colors"
+                  />
+                </div>
+                
+                {/* Email (requested by user) */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+                  <label className="text-gray-300 whitespace-nowrap font-light" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>My Email Is</label>
+                  <input 
+                    type="email" 
+                    placeholder="Email" 
+                    className="w-full bg-[#0a0a0a] border border-gray-800 p-3 text-white focus:border-[#7800FF] focus:outline-none transition-colors"
+                  />
+                </div>
+
+              </div>
+
+              {/* Message (made bigger as requested) */}
+              <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-6 mb-8">
+                <label className="text-gray-300 whitespace-nowrap font-light md:mt-3" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>I Am Interested In</label>
+                <textarea 
+                  placeholder="Message" 
+                  rows={4}
+                  className="w-full bg-[#0a0a0a] border border-gray-800 p-3 text-white focus:border-[#7800FF] focus:outline-none transition-colors resize-y"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex justify-start md:justify-end">
+                <button 
+                  type="submit"
+                  className="bg-[#7800FF] hover:bg-[#6500D1] text-white font-bold tracking-widest text-sm py-4 px-12 transition-colors uppercase"
+                  style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
+                >
+                  Send
+                </button>
+              </div>
+            </form>
+
+            {/* Contact Details Row */}
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-6 text-sm font-light text-gray-300 mt-4 border-t border-gray-900 pt-10" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+              <div className="flex items-center gap-3">
+                <FaPhoneAlt size={16} className="text-[#7800FF]" />
+                <span>+92 455 478 112</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt size={16} className="text-[#7800FF]" />
+                <span>Defense Phase 3, Lahore Pakistan</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaEnvelope size={16} className="text-[#7800FF]" />
+                <span>videoeditor@gmail.com</span>
+              </div>
+            </div>
+
           </div>
-          <div className="flex-1">
-            <label
-              className="block text-gray-400 text-xs tracking-widest uppercase mb-2"
-              style={{
-                fontFamily: "'Rajdhani', sans-serif",
-                letterSpacing: "0.2em",
-              }}
-            >
-              I Am Interested In
-            </label>
-            <input
-              type="text"
-              placeholder="Message"
-              value={form.interest}
-              onChange={(e) => setForm({ ...form, interest: e.target.value })}
-              className="contact-input"
-            />
-          </div>
-          <button
-            onClick={handleSubmit}
-            className="btn-purple shrink-0"
-            style={{ minWidth: "110px" }}
-          >
-            {sent ? "SENT ✓" : "SEND"}
-          </button>
         </div>
 
-        {/* Divider */}
-        <div
-          className="h-px w-full mb-8"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(139,0,255,0.4), transparent)",
-          }}
-        />
-
-        {/* Contact info */}
-        <div className="flex flex-wrap gap-8">
-          <ContactItem icon={<PhoneIcon />} text="+92 455 478 112" />
-          <ContactItem
-            icon={<LocationIcon />}
-            text="Defense Phase 3, Lahore Pakistan"
-          />
-          <ContactItem icon={<EmailIcon />} text="videoeditor@gmail.com" />
-        </div>
       </div>
+
+      {/* Full vertical "Go Back To The Top" element on the right edge */}
+      <div className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 h-full hidden md:flex items-center justify-center z-20 pointer-events-none">
+        
+        <button 
+          onClick={scrollToTop}
+          className="group pointer-events-auto flex items-center justify-center translate-x-1/2 gap-2 text-gray-400 hover:text-[#7800FF] transition-colors"
+        >
+          <span className="[writing-mode:vertical-rl] rotate-180 tracking-[0.2em] uppercase text-sm font-light py-4 border-l border-transparent hover:border-[#7800FF] pl-2 transition-colors" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+            Go Back To The Top
+          </span>
+        </button>
+
+      </div>
+
     </section>
-  );
-}
-
-function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <span style={{ color: "var(--purple-primary)" }}>{icon}</span>
-      <span
-        className="text-gray-300 text-sm"
-        style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 500 }}
-      >
-        {text}
-      </span>
-    </div>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-      <circle cx="12" cy="10" r="3" fill="#000" />
-    </svg>
-  );
-}
-
-function EmailIcon() {
-  return (
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <polyline
-        points="22,6 12,13 2,6"
-        stroke="#000"
-        strokeWidth="1.5"
-        fill="none"
-      />
-    </svg>
   );
 }
