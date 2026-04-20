@@ -9,7 +9,7 @@ const testimonials = [
     id: 1, 
     name: "Nicky R.", 
     role: "11-50 employees", 
-    text: <>Jimmy’s editing is incredibly user-friendly and <strong>modern</strong>. It has saved me <strong>a lot of time</strong> trying to do it all myself.</>,
+    text: <>Ryan’s editing is incredibly user-friendly and <strong>modern</strong>. It has saved me <strong>a lot of time</strong> trying to do it all myself.</>,
     initial: "N"
   },
   { 
@@ -23,14 +23,14 @@ const testimonials = [
     id: 3, 
     name: "David K.", 
     role: "Podcast Host", 
-    text: <>He knows exactly how to capture the audience's attention. Our <strong>engagement skyrocketed</strong> after Jimmy started editing!</>,
+    text: <>He knows exactly how to capture the audience's attention. Our <strong>engagement skyrocketed</strong> after Ryan started editing!</>,
     initial: "D"
   },
   { 
     id: 4, 
     name: "Alex B.", 
     role: "Agency Director", 
-    text: <>Professional, remarkably fast, and extremely talented. Jimmy delivers <strong>premium quality</strong> every single time.</>,
+    text: <>Professional, remarkably fast, and extremely talented. Ryan delivers <strong>premium quality</strong> every single time.</>,
     initial: "A"
   },
 ];
@@ -58,12 +58,11 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="mb-12 flex flex-col items-center">
           <h2 
-            className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-2 text-white text-center"
-            style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
+            className="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-2 text-white text-center font-orbitron"
           >
             Testimonials
           </h2>
-          <div className="h-[2px] w-64 bg-gradient-to-r from-red-600 via-green-500 to-blue-600"></div>
+          <div className="h-0.5 w-64 bg-linear-to-r from-red-600 via-green-500 to-blue-600"></div>
         </div>
 
         {/* Slider Controls & Carousel */}
@@ -86,7 +85,7 @@ export default function Testimonials() {
             {testimonials.map((t) => (
               <div 
                 key={t.id} 
-                className="relative w-[300px] md:w-[380px] flex-none snap-center mt-10 h-auto"
+                className="relative w-75 md:w-95 flex-none snap-center mt-10 h-auto"
               >
                 {/* Overlapping Avatar Area */}
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-[5px] border-black overflow-hidden z-20 bg-zinc-800 flex items-center justify-center text-3xl font-bold text-gray-500 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
@@ -108,14 +107,14 @@ export default function Testimonials() {
                      </div>
                      
                      {/* Testimonial Body (matching the mixed font weight pattern) */}
-                     <p className="text-gray-300 text-lg md:text-xl font-light text-center leading-relaxed" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+                     <p className="text-gray-300 text-lg md:text-xl font-light text-center leading-relaxed">
                        {t.text}
                      </p>
                    </div>
                    
                    {/* Author Subtext */}
                    <div className="mt-10 text-center">
-                     <h4 className="text-white font-semibold tracking-wide text-lg" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>{t.name}</h4>
+                     <h4 className="text-white font-semibold tracking-wide text-lg">{t.name}</h4>
                      <p className="text-gray-500 text-sm mt-1">{t.role}</p>
                    </div>
 

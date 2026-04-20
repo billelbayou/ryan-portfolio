@@ -16,13 +16,13 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-black text-white w-full sticky top-0 z-50">
+    <header className="bg-black text-white w-full sticky top-0 z-50 border-b border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center text-2xl tracking-wider" style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}>
-              <span className="font-light">Dramix</span>
+          <div className="shrink-0">
+            <Link href="/" className="flex items-center text-2xl tracking-wider font-orbitron">
+              <span className="font-light">Ryan</span>
             </Link>
           </div>
 
@@ -33,7 +33,6 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 className="text-xs lg:text-sm font-medium hover:text-gray-300 transition-colors tracking-widest"
-                style={{ fontFamily: 'var(--font-body, sans-serif)' }}
               >
                 {link.name}
               </Link>
@@ -42,7 +41,7 @@ export default function Header() {
 
           {/* Desktop Socials */}
           <div className="hidden md:flex items-center space-x-8">
-            <div className="h-6 w-[2px] bg-[#424242]"></div>
+            <div className="h-6 w-0.5 bg-[#424242]"></div>
             <div className="flex items-center space-x-5">
               <Link href="#" className="text-white hover:text-gray-300 transition-colors">
                 <FaFacebookF size={16} />
@@ -78,7 +77,6 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#424242] transition-colors tracking-widest uppercase"
-                style={{ fontFamily: 'var(--font-body, sans-serif)' }}
               >
                 {link.name}
               </Link>

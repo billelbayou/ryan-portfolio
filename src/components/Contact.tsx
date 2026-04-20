@@ -21,12 +21,11 @@ export default function Contact() {
             
             {/* Title & Underline */}
             <h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wider mb-2 text-white"
-              style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wider mb-2 text-white font-orbitron"
             >
               I Am Ready To Consult You
             </h2>
-            <div className="h-[2px] w-full max-w-[600px] bg-gradient-to-r from-red-600 via-green-500 to-blue-600 mb-12"></div>
+            <div className="h-0.5 w-full max-w-150 bg-linear-to-r from-red-600 via-green-500 to-blue-600 mb-12"></div>
 
             {/* Custom Form Layout matching user adjustments */}
             <form className="w-full mb-16" onSubmit={(e) => e.preventDefault()}>
@@ -34,7 +33,7 @@ export default function Contact() {
                 
                 {/* Name */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-                  <label className="text-gray-300 whitespace-nowrap font-light" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>My Name Is</label>
+                  <label className="text-gray-300 whitespace-nowrap font-light">My Name Is</label>
                   <input 
                     type="text" 
                     placeholder="Name" 
@@ -44,7 +43,7 @@ export default function Contact() {
                 
                 {/* Email (requested by user) */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-                  <label className="text-gray-300 whitespace-nowrap font-light" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>My Email Is</label>
+                  <label className="text-gray-300 whitespace-nowrap font-light">My Email Is</label>
                   <input 
                     type="email" 
                     placeholder="Email" 
@@ -56,7 +55,7 @@ export default function Contact() {
 
               {/* Message (made bigger as requested) */}
               <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-6 mb-8">
-                <label className="text-gray-300 whitespace-nowrap font-light md:mt-3" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>I Am Interested In</label>
+                <label className="text-gray-300 whitespace-nowrap font-light md:mt-3">I Am Interested In</label>
                 <textarea 
                   placeholder="Message" 
                   rows={4}
@@ -68,8 +67,7 @@ export default function Contact() {
               <div className="flex justify-start md:justify-end">
                 <button 
                   type="submit"
-                  className="bg-[#7800FF] hover:bg-[#6500D1] text-white font-bold tracking-widest text-sm py-4 px-12 transition-colors uppercase"
-                  style={{ fontFamily: 'var(--font-orbitron, sans-serif)' }}
+                  className="bg-[#7800FF] hover:bg-[#6500D1] text-white font-bold tracking-widest text-sm py-4 px-12 transition-colors uppercase font-orbitron"
                 >
                   Send
                 </button>
@@ -77,7 +75,7 @@ export default function Contact() {
             </form>
 
             {/* Contact Details Row */}
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-6 text-sm font-light text-gray-300 mt-4 border-t border-gray-900 pt-10" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-6 text-sm font-light text-gray-300 mt-4 border-t border-gray-900 pt-10">
               <div className="flex items-center gap-3">
                 <FaPhoneAlt size={16} className="text-[#7800FF]" />
                 <span>+92 455 478 112</span>
@@ -104,7 +102,7 @@ export default function Contact() {
           onClick={scrollToTop}
           className="group pointer-events-auto flex items-center justify-center translate-x-1/2 gap-2 text-gray-400 hover:text-[#7800FF] transition-colors"
         >
-          <span className="[writing-mode:vertical-rl] rotate-180 tracking-[0.2em] uppercase text-sm font-light py-4 border-l border-transparent hover:border-[#7800FF] pl-2 transition-colors" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+          <span className="[writing-mode:vertical-rl] rotate-180 tracking-[0.2em] uppercase text-sm font-light py-4 border-l border-transparent hover:border-[#7800FF] pl-2 transition-colors">
             Go Back To The Top
           </span>
         </button>
